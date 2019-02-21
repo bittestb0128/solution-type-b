@@ -19,9 +19,10 @@ public class Main {
 		Scanner scan2 = new Scanner(System.in);
 		int bridge =scan2.nextInt();
 		
-		makeRocksBridge(rock,bridge);
+		String rock_bridge = makeRocksBridge(rock,bridge);
+		System.out.println(rock_bridge);
 	}
-	public static void makeRocksBridge(int rock,int bridge) {
+	public static String makeRocksBridge(int rock,int bridge) {
 		String[] result = new String[rock*bridge];
 		int rockCnt = 0;
 		int bridgeCnt = 0;
@@ -29,14 +30,17 @@ public class Main {
 		for(int i = 0; i<result.length; i++) {
 			
 			if(random.nextBoolean()) {
-				result[i] = "O";
 				rockCnt++;
+				if(rockCnt == rock) {
+					result[i] = "#";
+				}else {
+					result[i] = "O";
+				}
 			}else {
 				result[i] = "#";
-				bridgeCnt++;
 			}
 		}
-
+		return result.toString();
 	}
 
 }
